@@ -1,6 +1,9 @@
 <?php
-
-Route::prefix('admin')->group(function () {
+ Route::get('admin/login', function () {
+     return view('admin.auth.login');
+ })->name('admin.login')->middleware('guest');
+ Route::post('admin/login', 'Auth\LoginController@admin')->name('admin.login')->middleware('guest');
+Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/dashboard', 'DashboardController@admin')->name('admin.index');
     Route::get('/user/all', 'UserController@all')->name('admin.user.all');
     Route::get('/barangay/all', 'BarangayController@all')->name('admin.barangay.all');
@@ -36,9 +39,4 @@ Route::prefix('admin')->group(function () {
     Route::get('survey-field/{id}/edit', 'SuveryFieldController@edit')->name('admin.survey-field.edit');
     Route::put('survey-field/{id}', 'SuveryFieldController@update')->name('admin.survey-field.update');
     Route::delete('survey-field/{id}', 'SuveryFieldController@destroy')->name('admin.survey-field.destory');
-
-
-    Route::get('login', function () {
-        return view('admin.auth.login');
-    });
 });

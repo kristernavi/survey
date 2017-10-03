@@ -7,7 +7,7 @@
   <title>Timeline - Free Bulma template</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.2/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url('css/bulma.css')}}">
 
   <link rel="stylesheet" type="text/css" href="{{ url('/css/timeline.css') }}">
   <style type="text/css">

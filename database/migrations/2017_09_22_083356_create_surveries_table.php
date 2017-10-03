@@ -13,12 +13,11 @@ class CreateSurveriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('surveries', function (Blueprint $table) {
+        Schema::create('CreateSurveriesTable', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('sub_category_id')->nullable();
             $table->unsignedInteger('house_hold_id')->nullable();
             $table->unsignedInteger('surverior_id')->nullable();
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('set null');
+
             $table->foreign('house_hold_id')->references('id')->on('house_holds')->onDelete('set null');
             $table->foreign('surverior_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();

@@ -11,14 +11,21 @@
 |
 */
 Route::auth();
-Route::get('sample', function () {
-    return view('auth.sample');
-})->middleware('guest');
-Route::get('home', function () {
-    return view('home');
-});
+// Route::get('sample', function () {
+//     return view('auth.sample');
+// })->middleware('guest');
+// Route::get('home', function () {
+//     return view('home');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('surverior.login.index'));
+});
+Route::get('/home', function () {
+    if (Auth::user()->type == 'admin') {
+        return redirect(route('admin.index'));
+    } else {
+        return redirect(route('surverior.index'));
+    }
 });
 foreach (File::allFiles(__DIR__.'/partials') as $partials) {
     # code...

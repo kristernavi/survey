@@ -53,7 +53,7 @@ class BarangayController extends Controller
         //
         $barangay = request()->validate([
             'name' => 'required|min:5|unique:barangays,name',
-            'description' => 'min:6',
+            'description' => 'nullable|min:6',
         ]);
         $barangay = Barangay::create($barangay);
         return redirect()->back()->with('name', $barangay->name);

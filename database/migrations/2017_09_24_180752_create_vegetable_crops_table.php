@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSurveyFieldsTable extends Migration
+class CreateVegetableCropsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateSurveyFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('survey_fields', function (Blueprint $table) {
+        Schema::create('vegetable_crops', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('category_id')->nullable();
             $table->string('name');
-            $table->string('type');
-            $table->boolean('is_dynamic')->default(false);
+            $table->decimal('area')->default(0);
+            $table->unsignedInteger('crop_id')->nullable();
+            $table->foreign('crop_id')->references('id')->on('survey_crops')->onDelete('set null');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
 
@@ -31,6 +30,6 @@ class CreateSurveyFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('survey_fields');
+        Schema::dropIfExists('vegetable_crops');
     }
 }

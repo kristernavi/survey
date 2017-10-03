@@ -33,7 +33,7 @@
           <a class="navbar-item " href="{{ route('house-hold.create')}}">
             Add Household
           </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+          <a class="navbar-item " href="{{ route('house-hold.index')}}">
             View Household
           </a>
 
@@ -41,14 +41,14 @@
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link  is-active" href="{{ route('house-hold.index')}}">
+        <a class="navbar-link  is-active" href="{{ route('survey.index')}}">
           Survey
         </a>
         <div class="navbar-dropdown ">
           <a class="navbar-item " href="{{ route('survey.add.step1')}}">
             Add Survey
           </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+          <a class="navbar-item " href="{{ route('survey.index')}}">
             View Survey
           </a>
 
@@ -68,13 +68,19 @@
 
  <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link  is-active" href="/documentation/overview/start/">
-          Ivan Krister Garcia
+          {{ ucwords(Auth::user()->fullname) }}
         </a>
         <div class="navbar-dropdown ">
-          <a class="navbar-item " href="/documentation/overview/start/">
-            Logout
-          </a>
 
+          <a  class="navbar-item " href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
 
         </div>
       </div>

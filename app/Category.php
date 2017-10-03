@@ -9,8 +9,8 @@ class Category extends Model
     //
     protected $guarded = [];
 
-    public function fields()
+    public function subs()
     {
-        return $this->hasMany(SurveyField::class, 'category_id');
+        return $this->hasMany(SubCategory::class, 'category_id');
     }
 }

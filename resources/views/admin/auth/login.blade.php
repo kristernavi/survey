@@ -35,10 +35,15 @@
               <h1>Admin Login</h1>
                <div >
                @if ($errors->has('email'))
-                                    <span class=class="help-block label label-danger">
+                                   <span class="help-block label label-danger">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                @if ($errors->has('message'))
+                   <span class="help-block label label-danger">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                    @endif
                 <input type="text" class="form-control" placeholder="Username" required="" value="{{ old('email') }}" name="email" />
 
               </div>

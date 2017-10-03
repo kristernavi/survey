@@ -15,10 +15,9 @@
 
               <div class="card-user">
                 <div class="card-user-name">
-                  <a href="#">John Smith</a>
+                  <a href="#">{{ ucwords(Auth::user()->fullname) }}</a>
                 </div>
                 <span>
-                  <a href="#">@<span>jsmith</span></a>
                 </span>
               </div>
 

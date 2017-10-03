@@ -14,6 +14,7 @@
         Add Household
       </h1>
  {{ Form::open(array('method' => 'POST', 'id' => 'add-household-form' , 'route' => 'house-hold.store'  )) }}
+ <input type="hidden" name="created_by" value="{{Auth::id()}}">
   <div class="field is-horizontal">
   <div class="field-label is-normal">
     <label class="label">Name</label>
@@ -64,19 +65,19 @@
 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
-    <label class="label">Age</label>
+    <label class="label">Birthdate</label>
   </div>
   <div class="field-body">
     <div class="field is-narrow"">
       <p class="control is-expanded has-icons-left">
-        <input class="input {{ $errors->has('age') ? ' is-danger' : '' }}" type="text" placeholder="Age" name="age" value="{{ old('age')}}">
+        <input class="input {{ $errors->has('birthdate') ? ' is-danger' : '' }}" type="date" placeholder="Age" name="birthdate" value="{{ old('birthdate')}}">
         <span class="icon is-small is-left">
           <i class="fa fa-user"></i>
         </span>
       </p>
-       @if ($errors->has('age'))
+       @if ($errors->has('birthdate'))
         <p class="help is-danger">
-        {{ $errors->first('age') }}
+        {{ $errors->first('birthdate') }}
         </p>
          @endif
     </div>

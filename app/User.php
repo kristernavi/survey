@@ -29,4 +29,9 @@ class User extends Authenticatable
     {
         return ucfirst("{$this->firstname} {$this->middlename} {$this->lastname}");
     }
+
+    public function survies()
+    {
+        return $this->hasMany(Survey::class, 'surverior_id');
+    }
 }

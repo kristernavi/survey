@@ -24,6 +24,9 @@ class CreateHouseHoldsTable extends Migration
             $table->unsignedInteger('barangay_id')->nullable();
             $table->foreign('purok_id')->references('id')->on('puroks')->onDelete('set null');
             $table->foreign('barangay_id')->references('id')->on('barangays')->onDelete('set null');
+            $table->unsignedInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
+
 
             $table->timestamps();
         });

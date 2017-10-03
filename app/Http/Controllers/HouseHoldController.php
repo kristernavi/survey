@@ -17,7 +17,7 @@ class HouseHoldController extends Controller
     public function index()
     {
         //
-        $households = HouseHold::paginate(1);
+        $households = HouseHold::paginate(10);
         return view('surverior.household.index', compact('households'));
     }
 
@@ -47,10 +47,11 @@ class HouseHoldController extends Controller
             'firstname' => 'required|string',
             'middlename'    => 'required|string',
             'lastname'  => 'required|string',
-            'age'   => 'required|integer',
+            'birthdate'   => 'required|date',
             'gender'  => 'required|in:m,f',
             'barangay_id' => 'required|exists:barangays,id',
             'purok_id' => 'required|exists:puroks,id',
+            'created_by' => 'required|exists:users,id'
 
         ]);
         HouseHold::create($data);
